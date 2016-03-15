@@ -37,12 +37,15 @@ public class playerScript : MonoBehaviour {
 
 	void Start () {
 
-		if (SceneManager.GetActiveScene().name.Equals("prototypeLevel2"))
+		if (SceneManager.GetActiveScene ().name.Equals ("prototypeLevel2")) {
 			gravDown = true;
-			else
+			facingDirection = 1f;
+			flippedSprite = false;
+		} else {
 			gravUp = true;
-		facingDirection = 1f;
-		flippedSprite = false;
+			facingDirection = 1f;
+			flippedSprite = true;
+		}
 	}
 	
 	void Update () {
