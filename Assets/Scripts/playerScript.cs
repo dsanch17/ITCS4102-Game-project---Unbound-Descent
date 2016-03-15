@@ -10,8 +10,11 @@ public class playerScript : MonoBehaviour {
 	public PolygonCollider2D freyaHitbox;
 	public BoxCollider2D freyaFeetBox;
 
-	public float moveSpeed = 2.0f;
+	public float moveSpeed = .04f;
+	public float airSpeedMultiplier = .8f;
 	public float jumpForce = 200f;
+
+	float moveDistance;
 
 	float moveInput;
 	bool jumpInput;
@@ -53,6 +56,7 @@ public class playerScript : MonoBehaviour {
 		//reset input variables
 		moveInput = 0;
 		moveForce = 0;
+		moveDistance = 0;
 		jumpInput = false;
 			
 		if (freyaHitbox.IsTouchingLayers (LayerMask.GetMask("Death"))) { 
@@ -66,7 +70,10 @@ public class playerScript : MonoBehaviour {
 
         onGround = freyaFeetBox.IsTouchingLayers (LayerMask.GetMask("Platforms"));
 
-
+		if (!onGround)
+			moveDistance = airSpeedMultiplier * moveSpeed;
+		else
+			moveDistance = moveSpeed;
 
 		//getkey is true if held down
 		//getkeydown is true once per press
@@ -92,7 +99,7 @@ public class playerScript : MonoBehaviour {
 
 
 
-		moveForce = moveSpeed * moveInput;
+		moveForce = moveDistance * moveInput;
 
 
 		//call function to set movement values reletive to current gravity
