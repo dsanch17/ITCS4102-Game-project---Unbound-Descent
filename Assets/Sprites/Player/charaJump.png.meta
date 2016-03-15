@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 42d5920a899b24c02a6a40b1d980e364
+timeCreated: 1458072645
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: charaJump_0
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 177, y: 133, z: 365, w: 921}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: charaJump_0
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 142
+        width: 444
+        height: 633
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 14, y: -219.5}
+        - {x: 59, y: -211.5}
+        - {x: 120, y: -181.5}
+        - {x: 127, y: -254.5}
+        - {x: 169, y: -292.5}
+        - {x: 213, y: -274.5}
+        - {x: 195, y: -246.5}
+        - {x: 165, y: -229.5}
+        - {x: 192, y: -89.5}
+        - {x: 191, y: -63.5}
+        - {x: 166, y: -16.5}
+        - {x: 130, y: 57.5}
+        - {x: 131, y: 87.5}
+        - {x: 160, y: 68.5}
+        - {x: 208, y: 110.5}
+        - {x: 222, y: 144.5}
+        - {x: 222, y: 173.5}
+        - {x: 204, y: 172.5}
+        - {x: 158, y: 130.5}
+        - {x: 161, y: 156.5}
+        - {x: 176, y: 208.5}
+        - {x: 202, y: 254.5}
+        - {x: 190, y: 289.5}
+        - {x: 170, y: 310.5}
+        - {x: 137, y: 316.5}
+        - {x: 82, y: 316.5}
+        - {x: 63, y: 303.5}
+        - {x: 50, y: 264.5}
+        - {x: 15, y: 203.5}
+        - {x: 9, y: 154.5}
+        - {x: 10, y: 103.5}
+        - {x: 13, y: 100.5}
+        - {x: 27, y: 99.5}
+        - {x: 9, y: 65.5}
+        - {x: -43, y: 33.5}
+        - {x: -154, y: -107.5}
+        - {x: -222, y: -212.5}
+        - {x: -222, y: -231.5}
+        - {x: -221, y: -234.5}
+        - {x: -193, y: -241.5}
+        - {x: -103, y: -239.5}
+        - {x: -102, y: -273.5}
+        - {x: -98, y: -293.5}
+        - {x: -71, y: -316.5}
+        - {x: -43, y: -316.5}
+        - {x: -35, y: -312.5}
+        - {x: -39, y: -291.5}
+        - {x: -43, y: -251.5}
+      - - {x: 210, y: -273.5}
+        - {x: 207, y: -273.5}
+        - {x: 206, y: -275.5}
+        - {x: 206, y: -280.5}
+        - {x: 208, y: -281.5}
+        - {x: 210, y: -281.5}
+        - {x: 212, y: -278.5}
+        - {x: 212, y: -274.5}
+      - - {x: -131, y: 12.5}
+        - {x: -142, y: 7.5}
+        - {x: -142, y: 3.5}
+        - {x: -140, y: 2.5}
+        - {x: -134, y: 2.5}
+        - {x: -126, y: 6.5}
+        - {x: -126, y: 12.5}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
