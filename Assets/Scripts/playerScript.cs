@@ -23,7 +23,7 @@ public class playerScript : MonoBehaviour {
 	bool onGround;
 
 	float moveX;
-	float moveY;
+	//float moveY;
 	float jumpX;
 	float jumpY;
 
@@ -222,28 +222,28 @@ public class playerScript : MonoBehaviour {
 
 		if (gravDown) {
 			moveX = moveForce;
-			moveY = 0;
+			//moveY = 0;
 			jumpX = 0;
 			jumpY = jumpForce;
 		}
 
 		else if (gravUp) {
 			moveX = moveForce * -1;
-			moveY = 0;
+			//moveY = 0;
 			jumpX = 0;
 			jumpY = jumpForce * -1;
 		}
 
 		else if (gravLeft) {
 			moveX = moveForce;
-			moveY = 0;
+			//moveY = 0;
 			jumpX = jumpForce;
 			jumpY = 0;
 		}
 
 		else if (gravRight) {
 			moveX = moveForce * -1;
-			moveY = 0;
+			//moveY = 0;
 			jumpX = jumpForce * -1;
 			jumpY = 0;
 		}
