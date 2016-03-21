@@ -11,6 +11,7 @@ public class playerScript : MonoBehaviour {
 	public BoxCollider2D freyaFeetBox;
 
 
+
 	public float moveSpeed = .04f;	
 	public float airSpeedMultiplier = .8f;
 	public float jumpForce = 200f;
