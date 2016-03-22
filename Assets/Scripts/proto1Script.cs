@@ -2,13 +2,15 @@
 using System.Collections;
 using UnityEngine.SceneManagement;
 
+
+// I hope you are having a great day
+
 public class Proto1Script : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
 	
 	}
-	
 	// Update is called once per frame
 	void Update () {
 	
@@ -21,6 +23,6 @@ public class Proto1Script : MonoBehaviour {
 
 	public void gotoLevel2()
 	{
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene ("prototypeLevel");
 	}
 }
