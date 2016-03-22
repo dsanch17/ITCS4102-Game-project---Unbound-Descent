@@ -45,9 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Proto1Script.cs" />
      <Compile Include="Assets\Scripts\keyScript.cs" />
      <Compile Include="Assets\Scripts\playerScript.cs" />
-     <Compile Include="Assets\Scripts\proto1Script.cs" />
      <Compile Include="Assets\Scripts\returnToTitleScript.cs" />
      <Compile Include="Assets\Scripts\titleScript.cs" />
  <Reference Include="UnityEngine.Networking">
