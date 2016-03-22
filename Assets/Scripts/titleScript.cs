@@ -6,11 +6,11 @@ public class titleScript : MonoBehaviour {
 
 	public void playPrototype()
 	{
-		SceneManager.LoadScene (2);
+		SceneManager.LoadScene ("prototypeLevel2");
 	}
 
 	public void viewInstructions()
 	{
-		SceneManager.LoadScene (4);
+		SceneManager.LoadScene ("InstructionsScene");
 	}
 }

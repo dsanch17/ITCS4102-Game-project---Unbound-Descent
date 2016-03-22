@@ -21,6 +21,6 @@ public class Proto1Script : MonoBehaviour {
 
 	public void gotoLevel2()
 	{
-		SceneManager.LoadScene (0);
+		SceneManager.LoadScene ("prototypeLevel");
 	}
 }

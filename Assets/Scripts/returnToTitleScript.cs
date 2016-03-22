@@ -6,6 +6,6 @@ public class returnToTitleScript : MonoBehaviour {
 
 	public void returnToTitle()
 	{
-		SceneManager.LoadScene (3);
+		SceneManager.LoadScene ("TitleScreen");
 	}
 }
