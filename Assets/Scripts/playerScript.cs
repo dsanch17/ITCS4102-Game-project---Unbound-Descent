@@ -68,10 +68,11 @@ public class playerScript : MonoBehaviour {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
 		}
 
+		/* omg this was breaking all my stuff
         if (freyaHitbox.IsTouchingLayers(LayerMask.GetMask("Win"))) {
             SceneManager.LoadScene("Win");
         }
-
+		*/
 
 		onGround = (freyaFeetBox.IsTouchingLayers (LayerMask.GetMask("Platforms")) || onMovingPlatform);
 
