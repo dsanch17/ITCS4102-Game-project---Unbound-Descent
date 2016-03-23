@@ -265,4 +265,20 @@ public class playerScript : MonoBehaviour {
 		freyaBody.transform.Translate (new Vector3 (moveX, 0, 0));
 	}
 
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.transform.tag == "movingPlatform")
+        {
+            transform.parent = other.transform;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other)
+    {
+        if (other.transform.tag == "movingPlatform")
+        {
+            transform.parent = null;
+        }
+    }
+
 }

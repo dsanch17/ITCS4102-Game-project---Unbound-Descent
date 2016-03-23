@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 // I hope you are having a great day
 
-public class Proto1Script : MonoBehaviour {
+public class proto1Script : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
