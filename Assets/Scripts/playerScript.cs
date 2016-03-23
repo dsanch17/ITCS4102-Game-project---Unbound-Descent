@@ -23,6 +23,7 @@ public class playerScript : MonoBehaviour {
 
 	float facingDirection;
 	bool onGround;
+	bool onMovingPlatform;
 
 	float moveX;
 	//float moveY;
@@ -51,6 +52,8 @@ public class playerScript : MonoBehaviour {
 			facingDirection = 1f;
 			flippedSprite = true;
 		}
+
+		
 	}
 	
 	void Update () {
@@ -70,7 +73,7 @@ public class playerScript : MonoBehaviour {
         }
 
 
-        onGround = freyaFeetBox.IsTouchingLayers (LayerMask.GetMask("Platforms"));
+		onGround = (freyaFeetBox.IsTouchingLayers (LayerMask.GetMask("Platforms")) || onMovingPlatform);
 
 		if (!onGround)
 			moveDistance = airSpeedMultiplier * moveSpeed;
@@ -270,6 +273,7 @@ public class playerScript : MonoBehaviour {
         if(other.transform.tag == "movingPlatform")
         {
             transform.parent = other.transform;
+			onMovingPlatform = true;
         }
     }
 
@@ -277,6 +281,7 @@ public class playerScript : MonoBehaviour {
     {
         if (other.transform.tag == "movingPlatform")
         {
+			onMovingPlatform = false;
             transform.parent = null;
         }
     }
