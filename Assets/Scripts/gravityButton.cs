@@ -23,9 +23,5 @@ public class gravityButton : MonoBehaviour
 
 	void OnCollisionStay2D(Collision2D other)
 	{
-		if (lockGravity)
-			
-		
 	}
 }
-

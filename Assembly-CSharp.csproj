@@ -58,7 +58,7 @@
       <HintPath>..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
     </Reference>
     <Compile Include="Assets\Scripts\gravityButton.cs" />
-    <Compile Include="Assets\gravityController.cs" />
+    <Compile Include="Assets\Scripts\gravityController.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -26,29 +26,23 @@ public class playerScript : MonoBehaviour {
 	bool onMovingPlatform;
 
 	float moveX;
-	//float moveY;
-	float jumpX;
 	float jumpY;
 
 	bool flippedSprite;
 
 	Vector2 gravity;
 
-	bool gravUp;
-	bool gravDown;
-	bool gravLeft;
-	bool gravRight;
 
 	public float moveForce;
 
 	void Start () {
 
 		if (SceneManager.GetActiveScene ().name.Equals ("prototypeLevel2")) {
-			gravDown = true;
+			gravityController.setGravDown ();
 			facingDirection = 1f;
 			flippedSprite = false;
 		} else {
-			gravUp = true;
+			gravityController.gravUp = true;
 			facingDirection = 1f;
 			flippedSprite = true;
 		}
@@ -64,8 +58,9 @@ public class playerScript : MonoBehaviour {
 		moveDistance = 0;
 		jumpInput = false;
 			
+
 		if (freyaHitbox.IsTouchingLayers (LayerMask.GetMask("Death"))) { 
-			SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+			restartLevel ();
 		}
 
 		onGround = (freyaFeetBox.IsTouchingLayers (LayerMask.GetMask("Platforms")) || onMovingPlatform);
@@ -75,32 +70,13 @@ public class playerScript : MonoBehaviour {
 		else
 			moveDistance = moveSpeed;
 
-		//getkey is true if held down
-		//getkeydown is true once per press
-		if (Input.GetKey (KeyCode.RightArrow) && (gravDown || gravUp))
-			moveInput = 1f;
-
-		if (Input.GetKey (KeyCode.LeftArrow) && (gravDown || gravUp))
-			moveInput = -1f;
-
-		if (Input.GetKey (KeyCode.UpArrow) && (gravLeft || gravRight))
-			moveInput = -1f;
-
-		if (Input.GetKey (KeyCode.DownArrow) && (gravLeft || gravRight))
-			moveInput = 1f;
-
-		if (Input.GetKeyDown (KeyCode.Space))
-			jumpInput = true;
-
-
+		//parse input and set base movement variables
+		movementInput();
 
 		//call function to set gravity flags
 		setGravity ();
 
-
-
 		moveForce = moveDistance * moveInput;
-
 
 		//call function to set movement values reletive to current gravity
 		setMovementRelative ();
@@ -108,17 +84,14 @@ public class playerScript : MonoBehaviour {
 
 		if (moveInput == 1 || moveInput == -1)
 			freyaMove ();
-		//move and jump in the relative directions
-
-
 
 
 		if (jumpInput && onGround)
-			freyaBody.AddForce(new Vector2(jumpX, jumpY));
+			freyaBody.AddForce(new Vector2(0, jumpY));
 
 
 
-		//flip sprite if the moving direciont has changed
+		//flip sprite if the moving direction has changed
 		if (moveInput != facingDirection && moveInput != 0) {
 			freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
 			facingDirection = moveInput;
@@ -140,49 +113,42 @@ public class playerScript : MonoBehaviour {
 	}
 
 	void gravityUpdate() {
-		if (gravUp) {
+		if (gravityController.gravUp) {
 			gravity.x = 0;
 			gravity.y = 9.8f;
 		}
 
-		if (gravDown) {
+		if (gravityController.gravDown) {
 			gravity.x = 0;
 			gravity.y = -9.8f;
 		}
 
-		if (gravRight) {
+		if (gravityController.gravRight) {
 			gravity.x = 9.8f;
 			gravity.y = 0;
 		}
 
-		if (gravLeft) {
+		if (gravityController.gravLeft) {
 			gravity.x = -9.8f;
 			gravity.y = 0;
 		}
 	}
-
-
-	public void setGravity()
+		
+	void setGravity()
 	{
 		// gravity flags and model rotation
-		if (gravUp == false && onGround && Input.GetKeyDown (KeyCode.W)) {
+		if (gravityController.gravUp == false && onGround && Input.GetKeyDown (KeyCode.W)) {
             GetComponent<AudioSource>().Play();
-			gravUp = true;
-			gravDown = false;
-			gravLeft = false; 
-			gravRight = false;
+			gravityController.setGravUp();
 			transform.eulerAngles = new Vector3(0, 0, 180f);
 			if (flippedSprite == false)
 				freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
 			flippedSprite = true;
 		}
 
-		if (gravDown == false && onGround && Input.GetKeyDown (KeyCode.S)) {
+		else if (gravityController.gravDown == false && onGround && Input.GetKeyDown (KeyCode.S)) {
             GetComponent<AudioSource>().Play();
-            gravUp = false;
-			gravDown = true;
-			gravLeft = false; 
-			gravRight = false;
+			gravityController.setGravDown ();
 			transform.eulerAngles = new Vector3(0, 0, 0);
 			if (flippedSprite == true)
 				freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
@@ -190,25 +156,19 @@ public class playerScript : MonoBehaviour {
 
 		}
 
-		if (gravLeft == false && onGround && Input.GetKeyDown (KeyCode.A)) {
+		else if (gravityController.gravLeft == false && onGround && Input.GetKeyDown (KeyCode.A)) {
             GetComponent<AudioSource>().Play();
-            gravUp = false;
-			gravDown = false;
-			gravLeft = true; 
-			gravRight = false;
-			transform.eulerAngles = new Vector3(0, 0, 270f);
+			gravityController.setGravLeft ();
+       		transform.eulerAngles = new Vector3(0, 0, 270f);
 			if (flippedSprite == true)
 				freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
 			flippedSprite = false;
 
 		}
 
-		if (gravRight == false && onGround && Input.GetKeyDown (KeyCode.D)) {
+		else if (gravityController.gravRight == false && onGround && Input.GetKeyDown (KeyCode.D)) {
             GetComponent<AudioSource>().Play();
-            gravUp = false;
-			gravDown = false;
-			gravLeft = false; 
-			gravRight = true;
+			gravityController.setGravRight ();
 			transform.eulerAngles = new Vector3(0, 0, 90f);
 			if (flippedSprite == false)
 				freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
@@ -217,34 +177,43 @@ public class playerScript : MonoBehaviour {
 		}
 	}
 
+	void movementInput() {
+		if (Input.GetKey (KeyCode.RightArrow) && (gravityController.gravDown || gravityController.gravUp))
+			moveInput = 1f;
+
+		if (Input.GetKey (KeyCode.LeftArrow) && (gravityController.gravDown || gravityController.gravUp))
+			moveInput = -1f;
+
+		if (Input.GetKey (KeyCode.UpArrow) && (gravityController.gravLeft || gravityController.gravRight))
+			moveInput = -1f;
+
+		if (Input.GetKey (KeyCode.DownArrow) && (gravityController.gravLeft || gravityController.gravRight))
+			moveInput = 1f;
+
+		if (Input.GetKeyDown (KeyCode.Space))
+			jumpInput = true;
+	}
+
 	void setMovementRelative() 
 	{
 
-		if (gravDown) {
+		if (gravityController.gravDown) {
 			moveX = moveForce;
-			//moveY = 0;
-			jumpX = 0;
 			jumpY = jumpForce;
 		}
 
-		else if (gravUp) {
+		else if (gravityController.gravUp) {
 			moveX = moveForce * -1;
-			//moveY = 0;
-			jumpX = 0;
 			jumpY = jumpForce * -1;
 		}
 
-		else if (gravLeft) {
+		else if (gravityController.gravLeft) {
 			moveX = moveForce;
-			//moveY = 0;
-			jumpX = jumpForce;
 			jumpY = 0;
 		}
 
-		else if (gravRight) {
+		else if (gravityController.gravRight) {
 			moveX = moveForce * -1;
-			//moveY = 0;
-			jumpX = jumpForce * -1;
 			jumpY = 0;
 		}
 
@@ -271,6 +240,10 @@ public class playerScript : MonoBehaviour {
 			onMovingPlatform = true;
         }
     }
+
+	void restartLevel() {
+		SceneManager.LoadScene (SceneManager.GetActiveScene ().name); 
+	}
 
     void OnCollisionExit2D(Collision2D other)
     {
