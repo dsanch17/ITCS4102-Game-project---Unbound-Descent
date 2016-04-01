@@ -68,12 +68,6 @@ public class playerScript : MonoBehaviour {
 			SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
 		}
 
-		/* omg this was breaking all my stuff
-        if (freyaHitbox.IsTouchingLayers(LayerMask.GetMask("Win"))) {
-            SceneManager.LoadScene("Win");
-        }
-		*/
-
 		onGround = (freyaFeetBox.IsTouchingLayers (LayerMask.GetMask("Platforms")) || onMovingPlatform);
 
 		if (!onGround)
@@ -168,7 +162,7 @@ public class playerScript : MonoBehaviour {
 	}
 
 
-	void setGravity()
+	public void setGravity()
 	{
 		// gravity flags and model rotation
 		if (gravUp == false && onGround && Input.GetKeyDown (KeyCode.W)) {
