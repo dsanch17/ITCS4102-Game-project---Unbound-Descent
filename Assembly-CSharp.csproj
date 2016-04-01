@@ -3,8 +3,9 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
+    <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
+    <RootNamespace></RootNamespace>
     <ProjectGuid>{AC032F8F-9CEB-0EF6-9946-40D3D4C53F70}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -33,32 +34,32 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.XML" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine">
-      <HintPath>..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEngine.dll</HintPath>
+      <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor">
-      <HintPath>..\..\..\Applications\Unity\Unity.app\Contents\Frameworks\Managed\UnityEditor.dll</HintPath>
+      <HintPath>/Applications/Unity/Unity.app/Contents/Frameworks/Managed/UnityEditor.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\conveyorBeltScript.cs" />
-    <Compile Include="Assets\Scripts\goalScript.cs" />
-    <Compile Include="Assets\Scripts\keyScript.cs" />
-    <Compile Include="Assets\Scripts\movingPlatform.cs" />
-    <Compile Include="Assets\Scripts\playerScript.cs" />
-    <Compile Include="Assets\Scripts\returnToTitleScript.cs" />
-    <Compile Include="Assets\Scripts\titleScript.cs" />
-    <Reference Include="UnityEngine.Networking">
-      <HintPath>..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\Networking\UnityEngine.Networking.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>..\..\..\Applications\Unity\Unity.app\Contents\UnityExtensions\Unity\GUISystem\UnityEngine.UI.dll</HintPath>
-    </Reference>
-    <Compile Include="Assets\Scripts\gravityButton.cs" />
-    <Compile Include="Assets\Scripts\gravityController.cs" />
+     <Compile Include="Assets\Scripts\conveyorBeltScript.cs" />
+     <Compile Include="Assets\Scripts\goalScript.cs" />
+     <Compile Include="Assets\Scripts\gravityButton.cs" />
+     <Compile Include="Assets\Scripts\gravityController.cs" />
+     <Compile Include="Assets\Scripts\keyScript.cs" />
+     <Compile Include="Assets\Scripts\movingPlatform.cs" />
+     <Compile Include="Assets\Scripts\playerScript.cs" />
+     <Compile Include="Assets\Scripts\returnToTitleScript.cs" />
+     <Compile Include="Assets\Scripts\titleScript.cs" />
+ <Reference Include="UnityEngine.Networking">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
+ </Reference>
+ <Reference Include="UnityEngine.UI">
+ <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -68,4 +69,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  
 </Project>
