@@ -10,19 +10,21 @@ public class gravityButton : MonoBehaviour
 	//enums are cool
 	public enum Direction{None, Up, Down, Left, Right};
 	public Direction gravityDirection;
+	public Animator buttonAnimator;
 
-	// Use this for initialization
-	void Start ()
-	{
-	}
-	
-	// Update is called once per frame
-	void Update ()
-	{
-	
+	void fixedUpdate() {
+	//	buttonAnimator.SetBool ("buttonPressed", false);
 	}
 
 	void OnCollisionEnter2D(Collision2D other) {
+		changeGravityButtion();
+	}
+
+	void OnCollisionStay2D(Collision2D other)
+	{
+	}
+
+	public void changeGravityButtion() {
 		if (gravityDirection == Direction.Up) 
 			gravityController.setGravUp ();
 		if (gravityDirection == Direction.Down) 
@@ -31,9 +33,20 @@ public class gravityButton : MonoBehaviour
 			gravityController.setGravLeft ();
 		if (gravityDirection == Direction.Right) 
 			gravityController.setGravRight ();
+		
 	}
 
-	void OnCollisionStay2D(Collision2D other)
-	{
+	void OnCollisionExit2D(Collision2D other) {
 	}
+
+	void OnTriggerEnter2D(Collider2D c) {
+		buttonAnimator.SetBool ("buttonPressed", true);
+	}
+
+	void OnTriggerExit2D(Collider2D c) {
+		buttonAnimator.SetBool ("buttonPressed", false);
+
+	}
+
+
 }

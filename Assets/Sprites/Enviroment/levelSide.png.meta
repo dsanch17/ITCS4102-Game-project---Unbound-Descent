@@ -1,0 +1,119 @@
+fileFormatVersion: 2
+guid: 885eb98989ba30247910b6249150464d
+timeCreated: 1460473048
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: levelSide_0
+    21300002: levelSide_1
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 4096
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: levelSide_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 69
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 30.5, y: -370}
+        - {x: 32.5, y: -368}
+        - {x: 34.5, y: -368}
+        - {x: 34.5, y: -363}
+        - {x: 30.5, y: -363}
+        - {x: 30.5, y: 347}
+        - {x: 32.5, y: 348}
+        - {x: 33.5, y: 352}
+        - {x: 30.5, y: 354}
+        - {x: 30.5, y: 358}
+        - {x: 27.5, y: 362}
+        - {x: 26.5, y: 362}
+        - {x: 24.5, y: 360}
+        - {x: -15.5, y: 400}
+        - {x: -34.5, y: 400}
+        - {x: -34.5, y: -400}
+        - {x: 0.5, y: -400}
+        - {x: 25.5, y: -375}
+        - {x: 27.5, y: -375}
+        - {x: 30.5, y: -372}
+    - name: levelSide_1
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 0
+        width: 70
+        height: 800
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 16, y: 400}
+        - {x: -24, y: 360}
+        - {x: -27, y: 361}
+        - {x: -30, y: 358}
+        - {x: -30, y: 354}
+        - {x: -35, y: 354}
+        - {x: -35, y: 349}
+        - {x: -30, y: 349}
+        - {x: -30, y: -362}
+        - {x: -29, y: -363}
+        - {x: -28, y: -368}
+        - {x: -29, y: -369}
+        - {x: -29, y: -371}
+        - {x: -27, y: -373}
+        - {x: -26, y: -373}
+        - {x: 1, y: -400}
+        - {x: 35, y: -400}
+        - {x: 35, y: 400}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

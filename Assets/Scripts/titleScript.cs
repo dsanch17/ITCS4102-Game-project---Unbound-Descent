@@ -4,13 +4,13 @@ using UnityEngine.SceneManagement;
 
 public class titleScript : MonoBehaviour {
 
-	public void playPrototype()
+	 void playPrototype()
 	{
-		SceneManager.LoadScene ("prototypeLevel2");
+		SceneManager.LoadScene (2);
 	}
 
 	public void viewInstructions()
 	{
-		SceneManager.LoadScene ("InstructionsScene");
+		SceneManager.LoadScene (1);
 	}
 }

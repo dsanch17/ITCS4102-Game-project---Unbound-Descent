@@ -40,25 +40,32 @@ public class playerScript : MonoBehaviour {
 	bool gravLeft;
 	bool gravRight;
 
+	bool upInput;
+	bool downInput;
+	bool leftInput;
+	bool rightInput;
+
+
+
 	void Start () {
 
 		if (SceneManager.GetActiveScene ().buildIndex == 2) {
 			gravityController.setGravDown ();
-			gravDown = true;
 			facingDirection = 1f;
 			flippedSprite = false;
 		} else {
 			gravityController.setGravUp ();
-			gravUp = true;
 			facingDirection = 1f;
 			flippedSprite = true;
 		}
+		updateLocalGravVariables ();
+
 
 		
 	}
 	
 	void Update () {
-
+		
 		//reset input variables
 		moveInput = 0;
 		moveForce = 0;
@@ -80,8 +87,7 @@ public class playerScript : MonoBehaviour {
 		//parse input and set base movement variables
 		movementInput();
 
-		detectGravityChange ();
-		updateLocalGravVariables (); //important that this comes after the change detection
+		 //important that this comes after the change detection
 
 		moveForce = moveDistance * moveInput;
 
@@ -113,10 +119,21 @@ public class playerScript : MonoBehaviour {
 	//anything that affects the physics should occur inside it
 	void FixedUpdate()
 	{
+		freyaBody.constraints = RigidbodyConstraints2D.FreezeRotation;
+		upInput = Input.GetKey (KeyCode.W);
+		downInput = Input.GetKey (KeyCode.S);
+		leftInput = Input.GetKey (KeyCode.A);
+		rightInput = Input.GetKey (KeyCode.D);
+
+		
+		detectGravityChange ();
+		updateLocalGravVariables ();
+
 		Physics2D.gravity = gravity;
 
 		//updates based on gravity flags
 		gravityUpdate ();
+
 	}
 
 	void gravityUpdate() {
@@ -147,6 +164,8 @@ public class playerScript : MonoBehaviour {
 		if (flippedSprite == false)
 			freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
 		flippedSprite = true;
+		freyaBody.constraints = RigidbodyConstraints2D.FreezeAll;
+
 	}
 
 	void setGravityDown() {
@@ -155,6 +174,7 @@ public class playerScript : MonoBehaviour {
 		if (flippedSprite == true)
 			freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
 		flippedSprite = false;
+		freyaBody.constraints = RigidbodyConstraints2D.FreezeAll;
 	}
 
 	void setGravityLeft() {
@@ -163,6 +183,7 @@ public class playerScript : MonoBehaviour {
 		if (flippedSprite == true)
 			freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
 		flippedSprite = false;
+		freyaBody.constraints = RigidbodyConstraints2D.FreezeAll;
 	}
 
 	void setGravityRight() {
@@ -171,28 +192,29 @@ public class playerScript : MonoBehaviour {
 		if (flippedSprite == false)
 			freyaSpriteRenderer.flipX = !freyaSpriteRenderer.flipX;
 		flippedSprite = true;
+		freyaBody.constraints = RigidbodyConstraints2D.FreezeAll;
 	}
 		
-		
-	void detectGravityChange()
+	
+	public void detectGravityChange()
 	{
 		// gravity flags and model rotation
-		if (gravUp == false && ((onGround && Input.GetKeyDown (KeyCode.W)) || (gravityController.gravUp == true && gravUp == false))) {
+		if (gravUp == false && ((onGround && upInput && !(downInput || rightInput || leftInput)) || gravityController.gravUp)) {
 			setGravityUp();
 			GetComponent<AudioSource>().Play(); //should move audio sources into another gameObject and make them public
 		}
 
-		else if (gravDown == false && ((onGround && Input.GetKeyDown (KeyCode.S)) || (gravityController.gravDown == true && gravDown == false))) {
+		else if (gravDown == false && ((onGround && downInput && !(upInput || rightInput || leftInput)) || gravityController.gravDown)) {
 			setGravityDown ();
 			GetComponent<AudioSource>().Play();
 		}
 
-		else if (gravLeft == false && ((onGround && Input.GetKeyDown (KeyCode.A)) || (gravityController.gravLeft == true && gravLeft == false))) {
+		else if (gravLeft == false && ((onGround && leftInput && !(downInput || rightInput || upInput)) || gravityController.gravLeft)) {
 			setGravityLeft();
 			GetComponent<AudioSource>().Play();
 		}
 
-		else if (gravRight == false && ((onGround && Input.GetKeyDown (KeyCode.D)) || (gravityController.gravRight == true && gravRight == false))) {
+		else if (gravRight == false && ((onGround && rightInput && !(downInput || upInput || leftInput)) || gravityController.gravRight)) {
 			setGravityRight ();
 			GetComponent<AudioSource>().Play();
 		}
@@ -221,6 +243,7 @@ public class playerScript : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Space))
 			jumpInput = true;
+
 	}
 
 	void setMovementRelative() 
