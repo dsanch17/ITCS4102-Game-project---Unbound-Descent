@@ -4,17 +4,14 @@ using System.Collections;
 public class gravityButton : MonoBehaviour
 {
 	//this boolean determines if the button being held down locks gravity in place
-	//this seems like a bad idea
-//	public bool lockGravity;
+	//this would freeze gravity rotation every frame until the player or a box is moved off the button, unimplemented for now
+
+	//public bool lockGravity; 
 
 	//enums are cool
 	public enum Direction{None, Up, Down, Left, Right};
 	public Direction gravityDirection;
 	public Animator buttonAnimator;
-
-	void fixedUpdate() {
-	//	buttonAnimator.SetBool ("buttonPressed", false);
-	}
 
 	void OnCollisionEnter2D(Collision2D other) {
 		changeGravityButtion();
@@ -22,6 +19,9 @@ public class gravityButton : MonoBehaviour
 
 	void OnCollisionStay2D(Collision2D other)
 	{
+		//if (lockGravity)
+		//	changeGravityButtion();
+		
 	}
 
 	public void changeGravityButtion() {

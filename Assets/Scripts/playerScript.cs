@@ -87,8 +87,6 @@ public class playerScript : MonoBehaviour {
 		//parse input and set base movement variables
 		movementInput();
 
-		 //important that this comes after the change detection
-
 		moveForce = moveDistance * moveInput;
 
 		//call function to set movement values reletive to current gravity
@@ -202,21 +200,37 @@ public class playerScript : MonoBehaviour {
 		if (gravUp == false && ((onGround && upInput && !(downInput || rightInput || leftInput)) || gravityController.gravUp)) {
 			setGravityUp();
 			GetComponent<AudioSource>().Play(); //should move audio sources into another gameObject and make them public
+			if (gravDown)
+				freyaAnimator.SetTrigger ("gravTurn180");
+			else
+				freyaAnimator.SetTrigger ("gravTurn90");
 		}
 
 		else if (gravDown == false && ((onGround && downInput && !(upInput || rightInput || leftInput)) || gravityController.gravDown)) {
 			setGravityDown ();
 			GetComponent<AudioSource>().Play();
+			if (gravUp)
+				freyaAnimator.SetTrigger ("gravTurn180");
+			else
+				freyaAnimator.SetTrigger ("gravTurn90");
 		}
 
 		else if (gravLeft == false && ((onGround && leftInput && !(downInput || rightInput || upInput)) || gravityController.gravLeft)) {
 			setGravityLeft();
 			GetComponent<AudioSource>().Play();
+			if (gravRight)
+				freyaAnimator.SetTrigger ("gravTurn180");
+			else
+				freyaAnimator.SetTrigger ("gravTurn90");
 		}
 
 		else if (gravRight == false && ((onGround && rightInput && !(downInput || upInput || leftInput)) || gravityController.gravRight)) {
 			setGravityRight ();
 			GetComponent<AudioSource>().Play();
+			if (gravLeft)
+				freyaAnimator.SetTrigger ("gravTurn180");
+			else
+				freyaAnimator.SetTrigger ("gravTurn90");
 		}
 	}
 
@@ -282,6 +296,7 @@ public class playerScript : MonoBehaviour {
 		freyaAnimator.SetBool ("Jump", jumpInput);
 
 		freyaAnimator.SetBool ("Grounded", onGround);
+
 	}
 
 	void freyaMove() {
