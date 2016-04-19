@@ -46,11 +46,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\GameAudioScript.cs" />
+     <Compile Include="Assets\Scripts\SpeedrunModeScript.cs" />
      <Compile Include="Assets\Scripts\TitleMusicScript.cs" />
      <Compile Include="Assets\Scripts\conveyorBeltScript.cs" />
      <Compile Include="Assets\Scripts\goalScript.cs" />
      <Compile Include="Assets\Scripts\gravityButton.cs" />
      <Compile Include="Assets\Scripts\gravityController.cs" />
+     <Compile Include="Assets\Scripts\highScoreController.cs" />
      <Compile Include="Assets\Scripts\keyScript.cs" />
      <Compile Include="Assets\Scripts\movingPlatform.cs" />
      <Compile Include="Assets\Scripts\playerScript.cs" />

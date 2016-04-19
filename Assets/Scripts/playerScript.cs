@@ -45,7 +45,7 @@ public class playerScript : MonoBehaviour {
 	bool leftInput;
 	bool rightInput;
 
-
+	bool playerChangedGravity = false;
 
 	void Start () {
 
@@ -65,7 +65,7 @@ public class playerScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		
+		playerChangedGravity = false;
 		//reset input variables
 		moveInput = 0;
 		moveForce = 0;
@@ -198,6 +198,8 @@ public class playerScript : MonoBehaviour {
 	{
 		// gravity flags and model rotation
 		if (gravUp == false && ((onGround && upInput && !(downInput || rightInput || leftInput)) || gravityController.gravUp)) {
+			if (onGround && upInput)
+				highScoreController.incrementCounter ();
 			setGravityUp();
 			GetComponent<AudioSource>().Play(); //should move audio sources into another gameObject and make them public
 			if (gravDown)
@@ -207,6 +209,8 @@ public class playerScript : MonoBehaviour {
 		}
 
 		else if (gravDown == false && ((onGround && downInput && !(upInput || rightInput || leftInput)) || gravityController.gravDown)) {
+			if (onGround && downInput)
+				highScoreController.incrementCounter ();
 			setGravityDown ();
 			GetComponent<AudioSource>().Play();
 			if (gravUp)
@@ -216,6 +220,8 @@ public class playerScript : MonoBehaviour {
 		}
 
 		else if (gravLeft == false && ((onGround && leftInput && !(downInput || rightInput || upInput)) || gravityController.gravLeft)) {
+			if (onGround && leftInput)
+				highScoreController.incrementCounter ();
 			setGravityLeft();
 			GetComponent<AudioSource>().Play();
 			if (gravRight)
@@ -225,6 +231,8 @@ public class playerScript : MonoBehaviour {
 		}
 
 		else if (gravRight == false && ((onGround && rightInput && !(downInput || upInput || leftInput)) || gravityController.gravRight)) {
+			if (onGround && rightInput)
+				highScoreController.incrementCounter ();
 			setGravityRight ();
 			GetComponent<AudioSource>().Play();
 			if (gravLeft)
@@ -324,5 +332,4 @@ public class playerScript : MonoBehaviour {
             transform.parent = null;
         }
     }
-
 }
