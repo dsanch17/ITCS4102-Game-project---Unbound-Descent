@@ -12,6 +12,7 @@ public class SpeedrunModeScript : MonoBehaviour {
 
 
 	public Text timerText;
+	public Text gravChangeCounterText;
 	static bool created = false;
 	int gravityCounter = 0;
 
@@ -21,6 +22,7 @@ public class SpeedrunModeScript : MonoBehaviour {
 		{
 			DontDestroyOnLoad(this.gameObject);
 			created = true;
+			highScoreController.resetCounter ();
 		}
 
 		else
@@ -34,17 +36,19 @@ public class SpeedrunModeScript : MonoBehaviour {
 
 		gravityCounter = highScoreController.getCounter ();
 
-	//	timerTruncated = (float)(Math.Truncate ((double)timer * 100.0) / 100.0);
+		timerTruncated = (float)(Math.Truncate ((double)timer * 100.0) / 100.0);
 
-		timerText.text = "" + gravityCounter;
+		timerText.text = "" + timerTruncated;
+
+		gravChangeCounterText.text = "" + gravityCounter;
 
 		timer +=  Time.deltaTime;
 
-		/* Delete this object when:
-		if (SceneManager.GetActiveScene ().buildIndex > 1) {
+		///* Delete this object when: title screen is loaded
+		if (SceneManager.GetActiveScene ().buildIndex == 7) {
+			highScoreController.updateTime (timer);
 			created = false;
 			Destroy (this.gameObject);
 		}
-		*/
 	}
 }
