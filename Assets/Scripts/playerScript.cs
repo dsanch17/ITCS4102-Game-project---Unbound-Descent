@@ -19,15 +19,15 @@ public class playerScript : MonoBehaviour {
 	float moveDistance;
 
 	float moveInput;
-	bool jumpInput;
+	//bool jumpInput;
 
 	float facingDirection;
 	bool onGround;
 	bool onMovingPlatform;
 
 	float moveX;
-	float jumpX;
-	float jumpY;
+	//float jumpX;
+	//float jumpY;
 
 	bool flippedSprite;
 
@@ -45,11 +45,10 @@ public class playerScript : MonoBehaviour {
 	bool leftInput;
 	bool rightInput;
 
-	bool playerChangedGravity = false;
 
 	void Start () {
 
-		if (SceneManager.GetActiveScene ().buildIndex == 2) {
+		if (SceneManager.GetActiveScene ().buildIndex == 2 || SceneManager.GetActiveScene().name.Equals("firstLevelWithTimer")) {
 			gravityController.setGravDown ();
 			facingDirection = 1f;
 			flippedSprite = false;
@@ -65,12 +64,11 @@ public class playerScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		playerChangedGravity = false;
 		//reset input variables
 		moveInput = 0;
 		moveForce = 0;
 		moveDistance = 0;
-		jumpInput = false;
+	//	jumpInput = false;
 			
 
 		if (freyaHitbox.IsTouchingLayers (LayerMask.GetMask("Death"))) { 
@@ -97,8 +95,8 @@ public class playerScript : MonoBehaviour {
 			freyaMove ();
 
 
-		if (jumpInput && onGround)
-			freyaBody.AddForce(new Vector2(jumpX, jumpY));
+	//	if (jumpInput && onGround)
+	//		freyaBody.AddForce(new Vector2(jumpX, jumpY));
 
 
 
@@ -263,8 +261,8 @@ public class playerScript : MonoBehaviour {
 		if (Input.GetKey (KeyCode.DownArrow) && (gravLeft || gravRight))
 			moveInput = 1f;
 
-		if (Input.GetKeyDown (KeyCode.Space))
-			jumpInput = true;
+	//	if (Input.GetKeyDown (KeyCode.Space))
+	//		jumpInput = true;
 
 	}
 
@@ -273,26 +271,26 @@ public class playerScript : MonoBehaviour {
 
 		if (gravDown) {
 			moveX = moveForce;
-			jumpY = jumpForce;
-			jumpX = 0;
+	//		jumpY = jumpForce;
+	//		jumpX = 0;
 		}
 
 		else if (gravUp) {
 			moveX = moveForce * -1;
-			jumpY = jumpForce * -1;
-			jumpX = 0;
+	//		jumpY = jumpForce * -1;
+	//		jumpX = 0;
 		}
 
 		else if (gravLeft) {
 			moveX = moveForce;
-			jumpX = jumpForce;
-			jumpY = 0;
+	//		jumpX = jumpForce;
+	//		jumpY = 0;
 		}
 
 		else if (gravRight) {
 			moveX = moveForce * -1;
-			jumpX = jumpForce * -1;
-			jumpY = 0;
+	//		jumpX = jumpForce * -1;
+	//		jumpY = 0;
 		}
 
 
@@ -301,7 +299,7 @@ public class playerScript : MonoBehaviour {
 	void setAnimatorFlags() {
 		freyaAnimator.SetBool ("Walk", moveInput != 0);
 
-		freyaAnimator.SetBool ("Jump", jumpInput);
+	//	freyaAnimator.SetBool ("Jump", jumpInput);
 
 		freyaAnimator.SetBool ("Grounded", onGround);
 

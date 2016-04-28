@@ -23,8 +23,16 @@ public class goalScript : MonoBehaviour {
 
 	public void goToNextLevel() //loads next level by the index in build settings
 	{
-		int nextLevel = (SceneManager.GetActiveScene().buildIndex + 1);
-		SceneManager.LoadScene(nextLevel);
+		Scene currentScene = SceneManager.GetActiveScene ();
+
+		if (currentScene.name.Equals ("firstLevelWithTimer")) {
+			SceneManager.LoadScene ("level2");
+		} else if (currentScene.name.Equals ("level5") && highScoreController.timedGame) {
+			SceneManager.LoadScene ("highScoreScene");
+		} else {
+			int nextLevel = (SceneManager.GetActiveScene().buildIndex + 1);
+			SceneManager.LoadScene(nextLevel);
+		}
 	}
 /*
 	void OnCollisionEnter2D(Collision2D other)

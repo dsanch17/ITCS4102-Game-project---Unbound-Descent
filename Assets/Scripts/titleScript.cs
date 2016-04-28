@@ -4,13 +4,24 @@ using UnityEngine.SceneManagement;
 
 public class titleScript : MonoBehaviour {
 
-	 void playPrototype()
+	public void playGame()
 	{
 		SceneManager.LoadScene (2);
 	}
 
+	public void playGameWithTimer()
+	{
+		SceneManager.LoadScene ("firstLevelWithTimer");
+	}
+
+
+	public void viewControls()
+	{
+		SceneManager.LoadScene ("ControlsScene");
+	}
+
 	public void viewInstructions()
 	{
-		SceneManager.LoadScene (1);
+		SceneManager.LoadScene ("StoryInstructions");
 	}
 }

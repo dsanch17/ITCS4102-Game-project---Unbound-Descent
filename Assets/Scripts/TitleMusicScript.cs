@@ -22,7 +22,7 @@ public class TitleMusicScript : MonoBehaviour {
 
 	void Update ()
 	{
-		if (SceneManager.GetActiveScene ().buildIndex > 1) {
+		if (SceneManager.GetActiveScene ().name.Equals("level1") || SceneManager.GetActiveScene ().name.Equals("firstLevelWithTimer")) {
 			created = false;
 			Destroy (this.gameObject);
 		}

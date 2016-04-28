@@ -4,6 +4,7 @@ public static class highScoreController
 {
 	static int gravCounter = 0;
 
+	public static bool timedGame = false;
 
 	static float time;
 

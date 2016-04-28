@@ -23,6 +23,7 @@ public class SpeedrunModeScript : MonoBehaviour {
 			DontDestroyOnLoad(this.gameObject);
 			created = true;
 			highScoreController.resetCounter ();
+			highScoreController.timedGame = true;
 		}
 
 		else
@@ -36,7 +37,7 @@ public class SpeedrunModeScript : MonoBehaviour {
 
 		gravityCounter = highScoreController.getCounter ();
 
-		timerTruncated = (float)(Math.Truncate ((double)timer * 100.0) / 100.0);
+		timerTruncated = (float)(Math	.Truncate ((double)timer * 100.0) / 100.0);
 
 		timerText.text = "" + timerTruncated;
 
@@ -44,9 +45,10 @@ public class SpeedrunModeScript : MonoBehaviour {
 
 		timer +=  Time.deltaTime;
 
-		///* Delete this object when: title screen is loaded
-		if (SceneManager.GetActiveScene ().buildIndex == 7) {
+		// Delete this object when: win screen is reached
+		if (SceneManager.GetActiveScene ().name.Equals("highScoreScene")) {
 			highScoreController.updateTime (timer);
+			highScoreController.timedGame = false;
 			created = false;
 			Destroy (this.gameObject);
 		}
