@@ -22,7 +22,7 @@ public class GameAudioScript : MonoBehaviour {
 
 	void Update ()
 	{
-		if (SceneManager.GetActiveScene ().name == "TitleScreen") {
+		if (SceneManager.GetActiveScene ().name == "TitleScreen" || SceneManager.GetActiveScene ().name == "Win") {
 			created = false;
 			Destroy (this.gameObject);
 		}

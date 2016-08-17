@@ -24,4 +24,9 @@ public class titleScript : MonoBehaviour {
 	{
 		SceneManager.LoadScene ("StoryInstructions");
 	}
+
+	public void viewCredits()
+	{
+		SceneManager.LoadScene ("CreditsScene");
+	}
 }
