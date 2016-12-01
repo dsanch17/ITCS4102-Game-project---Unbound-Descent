@@ -7,4 +7,4 @@ This game was built in Unity with C#. I served as the Team Lead and Lead Program
 
 The game is a 2D puzzle platformer in which the player must collect a key and get to the exit of each level. The player has control over gravity and must change gravity in all 4 directions to avoid obstacles and reach the exit.
 
-Most of the heavy lifting for the programming can be found in the playerController file which handles movement, death detection, and gravity changes among other things.
+Most of the heavy lifting for the programming can be found in the /Assets/Scripts/ and in particular the playerScript.cs file which handles movement, death detection, and gravity changes among other things.
